@@ -39,7 +39,12 @@ struct launchViewModel {
         }
         
         var launchSucces: Bool {
-        return self.launch.launch_success ?? false
-    }
+            return self.launch.launch_success ?? false
+        }
+       
+        var missionPatch: String {
+            return self.launch.links.mission_patch ?? "https://marka-logo.com/wp-content/uploads/2020/09/SpaceX-Logo-675x380.png"
+        }
+        
     
 }

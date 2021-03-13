@@ -31,8 +31,9 @@ class LaunchViewController: UIViewController, UITableViewDelegate, UITableViewDa
         self.yearPicker.dataSource = self
         
         getData(isFiltered: false)
-
-        navigationController?.navigationBar.topItem?.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.search, target: self, action: #selector(filterButtonClicked))
+        
+        let filterButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.search, target: self, action: #selector(filterButtonClicked))
+        navigationController?.navigationBar.topItem?.rightBarButtonItem = filterButton
         
     }
     
@@ -108,13 +109,24 @@ class LaunchViewController: UIViewController, UITableViewDelegate, UITableViewDa
         let cell = tableView.dequeueReusableCell(withIdentifier: "launchCell", for: indexPath) as! LaunchTableViewCell
         
         let launchViewModel = self.launchListViewModel.launchAtIndex(indexPath.row)
-        
+        cell.tag = indexPath.row
         cell.missionName.text = launchViewModel.missionName
         cell.launchYear.text = launchViewModel.launchYear
         cell.launchSucces.text = launchViewModel.launchSucces ? "Launch Successful" : "Launch Failed"
-        
-        
+        let imageURL = URL(string: launchViewModel.missionPatch)
+
+        DispatchQueue.global().async {
+            if(cell.tag == indexPath.row) {
+            let imageData = try? Data(contentsOf: imageURL!)
+
+            let image = UIImage(data: imageData!)
+            DispatchQueue.main.async {
+                cell.missionPatch.image = image
+            }
+            }
+        }
         return cell
+            
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
