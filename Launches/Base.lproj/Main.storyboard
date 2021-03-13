@@ -69,19 +69,27 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <pickerView hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bBw-mB-nyS">
+                                <rect key="frame" x="0.0" y="367" width="414" height="162"/>
+                            </pickerView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="QlL-Dy-bLh" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="4ob-UC-Fzd"/>
                             <constraint firstItem="QlL-Dy-bLh" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="FND-bP-n2Y"/>
+                            <constraint firstItem="bBw-mB-nyS" firstAttribute="trailing" secondItem="QlL-Dy-bLh" secondAttribute="trailing" id="Lb9-bt-8Qt"/>
+                            <constraint firstItem="bBw-mB-nyS" firstAttribute="leading" secondItem="QlL-Dy-bLh" secondAttribute="leading" id="MZG-8m-9mT"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="QlL-Dy-bLh" secondAttribute="bottom" id="fnu-z8-eGB"/>
+                            <constraint firstItem="bBw-mB-nyS" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="mWl-fy-gLZ"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="QlL-Dy-bLh" secondAttribute="trailing" id="pDB-Wu-oec"/>
+                            <constraint firstItem="bBw-mB-nyS" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="279" id="vEI-wT-c5E"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="D4b-N7-hEF"/>
                     <connections>
                         <outlet property="tableView" destination="QlL-Dy-bLh" id="ux2-eX-3rR"/>
+                        <outlet property="yearPicker" destination="bBw-mB-nyS" id="y8z-3A-CP8"/>
                         <segue destination="RnW-yl-FOd" kind="show" identifier="toDetailsVC" id="XIK-rm-Mhg"/>
                     </connections>
                 </viewController>

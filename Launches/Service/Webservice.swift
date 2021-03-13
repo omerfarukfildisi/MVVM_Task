@@ -12,15 +12,12 @@ class Webservice {
     func downloadLaunches(url: URL, completion: @escaping ([Launch]?) -> ()) {
         
         URLSession.shared.dataTask(with: url) { data, response, error in
-            print("data geldi")
             if let error = error {
                 print(error.localizedDescription)
                 completion(nil)
             } else if let data = data {
                 
-                    let launchList = try? JSONDecoder().decode([Launch].self, from: data)
-                    print(launchList)
-                    
+                    let launchList = try? JSONDecoder().decode([Launch].self, from: data)                    
                     if let launchList = launchList {
                         completion(launchList)
                     }
