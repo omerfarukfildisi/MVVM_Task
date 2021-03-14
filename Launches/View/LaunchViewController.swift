@@ -104,6 +104,7 @@ class LaunchViewController: UIViewController, UITableViewDelegate, UITableViewDa
         }
         yearPicker.isHidden = true;
         }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.launchListViewModel == nil ? 0 : self.launchListViewModel.numberOfRowsInSection()
     }
