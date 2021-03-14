@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 class LaunchViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIPickerViewDelegate, UIPickerViewDataSource {
    
@@ -22,6 +23,9 @@ class LaunchViewController: UIViewController, UITableViewDelegate, UITableViewDa
 
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var yearPicker: UIPickerView!
+    
+
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -113,8 +117,13 @@ class LaunchViewController: UIViewController, UITableViewDelegate, UITableViewDa
         cell.missionName.text = launchViewModel.missionName
         cell.launchYear.text = launchViewModel.launchYear
         cell.launchSucces.text = launchViewModel.launchSucces ? "Launch Successful" : "Launch Failed"
-        let imageURL = URL(string: launchViewModel.missionPatch)
-
+        
+        
+        let url = URL(string: launchViewModel.missionPatch)
+        cell.missionPatch.kf.setImage(with: url)
+        
+        
+        /* let imageURL = URL(string: launchViewModel.missionPatch)
         DispatchQueue.global().async {
             if(cell.tag == indexPath.row) {
             let imageData = try? Data(contentsOf: imageURL!)
@@ -124,7 +133,7 @@ class LaunchViewController: UIViewController, UITableViewDelegate, UITableViewDa
                 cell.missionPatch.image = image
             }
             }
-        }
+        }*/
         return cell
             
     }
